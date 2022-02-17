@@ -507,7 +507,7 @@ const Home = (props: HomeProps) => {
                     <DesContainer>
                         <Des elevation={3}>
                             <p>MINT</p>
-                            <GoldTitle>PROLEAGUE<br/> FOUNDER&#39;S NFT</GoldTitle>
+                            <GoldTitle>PROLEAGUE<br/> FOUNDERS NFT</GoldTitle>
                             <p>Proleague.gg is fostering the growth of the next generation of esport professionals by offering an engaging platform that uses blockchain, NFTs, and our own unique cryptocurrency to reward and incentivize competitive play.</p>
                             <p></p>
                             <LogoAligner><p>COST:&nbsp;&nbsp;&nbsp;&nbsp;<img src="solana-sol-logo.svg" alt=""></img>1 SOL</p></LogoAligner> 
@@ -540,7 +540,6 @@ const Home = (props: HomeProps) => {
                                                     publicKey:
                                                         wallet.publicKey ||
                                                         new PublicKey(CANDY_MACHINE_PROGRAM),
-                                                    //@ts-ignore
                                                     signTransaction: wallet.signTransaction,
                                                 }}
                                                 // // Replace with following when added
