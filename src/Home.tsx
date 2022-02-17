@@ -63,10 +63,11 @@ const Wallet = styled.ul`
 `;
 
 const ConnectButton = styled(WalletMultiButton)`
-  border-radius: 18px !important;
+  border-radius: 5px !important;
   padding: 6px 16px;
-  background-color: #4E44CE;
+  background-color: #E0FF1A;
   margin: 0 auto;
+  color: #070706;
 `;
 
 const NFT = styled(Paper)`
@@ -79,13 +80,14 @@ const NFT = styled(Paper)`
 const Des = styled(NFT)`
   text-align: left;
   padding-top: 0px;
+  max-width: 500px;
 `;
 
 const Card = styled(Paper)`
   display: inline-block;
   background-color: var(--card-background-lighter-color) !important;
   margin: 5px;
-  padding: 24px;
+  padding: 5px;
 `;
 
 const MintButtonContainer = styled.div`
@@ -200,14 +202,13 @@ const Price = styled(Chip)`
   margin: 5px;
   font-weight: bold;
   font-size: 1em !important;
+  visibility: hidden;
 `;
 
 const Image = styled.img`
-  height: 400px;
+  height: 520px;
   width: auto;
-  border-radius: 7px;
-  box-shadow: 5px 5px 40px 5px rgba(0,0,0,0.5);
-`;
+  `;
 
 const BorderLinearProgress = styled(LinearProgress)`
   margin: 20px 0;
@@ -361,7 +362,7 @@ const Home = (props: HomeProps) => {
 
     const renderCounter = ({days, hours, minutes, seconds}: any) => {
         return (
-            <div><Card elevation={1}><h1>{days}</h1><br/>Days</Card><Card elevation={1}><h1>{hours}</h1>
+            <div style={{ height: 100 }}> <Card elevation={1}><h1>{days}</h1><br/>Days</Card><Card elevation={1}><h1>{hours}</h1>
                 <br/>Hours</Card><Card elevation={1}><h1>{minutes}</h1><br/>Mins</Card><Card elevation={1}>
                 <h1>{seconds}</h1><br/>Secs</Card></div>
         );
@@ -382,8 +383,8 @@ const Home = (props: HomeProps) => {
             setBalance(balance - (whitelistEnabled ? whitelistPrice : price) - solFeesEstimation);
         }
         setSolanaExplorerLink(cluster === "devnet" || cluster === "testnet"
-            ? ("https://explorer.solana.com/address/" + mintPublicKey + "?cluster=" + cluster)
-            : ("https://explorer.solana.com/address/" + mintPublicKey));
+            ? ("https://solscan.io/token/" + mintPublicKey + "?cluster=" + cluster)
+            : ("https://solscan.io/token/" + mintPublicKey));
         throwConfetti();
     };
 
@@ -483,37 +484,34 @@ const Home = (props: HomeProps) => {
         <main>
             <MainContainer>
                 <WalletContainer>
-                    <Logo><a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer"><img alt=""
-                                                                                                          src="logo.png"/></a></Logo>
+                    <Logo><img alt="" width="219"src="https://proleague.gg/wp-content/uploads/2020/11/logo.svg"/></Logo>
                     <Menu>
-                        <li><a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer">Menu 1</a>
-                        </li>
-                        <li><a href="http://localhost:3000/" target="_blank"
-                               rel="noopener noreferrer">Menu 2</a></li>
-                        <li><a href="http://localhost:3000/" target="_blank"
-                               rel="noopener noreferrer">Menu 3</a></li>
+
                     </Menu>
                     <Wallet>
                         {wallet ?
                             <WalletAmount>{(balance || 0).toLocaleString()} SOL<ConnectButton/></WalletAmount> :
                             <ConnectButton>Connect Wallet</ConnectButton>}
                     </Wallet>
-                </WalletContainer>
-                <ShimmerTitle>MINT IS LIVE !</ShimmerTitle>
-                <br/>
-
-
+                </WalletContainer>                
+                <ShimmerTitle></ShimmerTitle>
                 <MintContainer>
                     <DesContainer>
                         <NFT elevation={3}>
-                            <h2>My NFT</h2>
-                            <br/>
                             <div><Price
                                 label={isActive && whitelistEnabled && (whitelistTokenBalance > 0) ? (whitelistPrice + " " + priceLabel) : (price + " " + priceLabel)}/><Image
-                                src="cool-cats.gif"
-                                alt="NFT To Mint"/></div>
-                            <br/>
-                            {wallet && isActive && whitelistEnabled && (whitelistTokenBalance > 0) &&
+                                src="nft.png"
+                                alt="ProLeague Founder&#39;s Edition Mint"/></div>
+                        </NFT>
+                    </DesContainer>
+                    <DesContainer>
+                        <Des elevation={3}>
+                            <p>MINT</p>
+                            <GoldTitle>PROLEAGUE<br/> FOUNDER&#39;S NFT</GoldTitle>
+                            <p>Proleague.gg is fostering the growth of the next generation of esport professionals by offering an engaging platform that uses blockchain, NFTs, and our own unique cryptocurrency to reward and incentivize competitive play.</p>
+                            <p></p>
+                            <LogoAligner><p>COST:&nbsp;&nbsp;&nbsp;&nbsp;<img src="solana-sol-logo.svg" alt=""></img>1 SOL</p></LogoAligner> 
+                                {wallet && isActive && whitelistEnabled && (whitelistTokenBalance > 0) &&
                               <h3>You have {whitelistTokenBalance} whitelist mint(s) remaining.</h3>}
                             {wallet && isActive &&
                                 /* <p>Total Minted : {100 - (itemsRemaining * 100 / itemsAvailable)}%</p>}*/
@@ -574,40 +572,13 @@ const Home = (props: HomeProps) => {
                             </MintButtonContainer>
                             <br/>
                             {wallet && isActive && solanaExplorerLink &&
-                              <SolExplorerLink href={solanaExplorerLink} target="_blank">View on Solana
-                                Explorer</SolExplorerLink>}
-                        </NFT>
-                    </DesContainer>
-                    <DesContainer>
-                        <Des elevation={2}>
-                            <LogoAligner><img src="logo.png" alt=""></img><GoldTitle>TITLE 1</GoldTitle></LogoAligner>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                        </Des>
-                        <Des elevation={2}>
-                            <LogoAligner><img src="logo.png" alt=""></img><GoldTitle>TITLE 2</GoldTitle></LogoAligner>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                        </Des>
-                        <Des elevation={2}>
-                            <LogoAligner><img src="logo.png" alt=""></img><GoldTitle>TITLE 3</GoldTitle></LogoAligner>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
+                              <SolExplorerLink href={solanaExplorerLink} target="_blank">View on Solscan
+                              </SolExplorerLink>}
                         </Des>
                     </DesContainer>
                 </MintContainer>
+                <br/>
+                <br/>
             </MainContainer>
             <Snackbar
                 open={alertState.open}
