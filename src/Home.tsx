@@ -511,7 +511,7 @@ const Home = (props: HomeProps) => {
                             <p>Proleague.gg is fostering the growth of the next generation of esport professionals by offering an engaging platform that uses blockchain, NFTs, and our own unique cryptocurrency to reward and incentivize competitive play.</p>
                             <p></p>
                             <LogoAligner><p>COST:&nbsp;&nbsp;&nbsp;&nbsp;<img src="solana-sol-logo.svg" alt=""></img>1 SOL</p></LogoAligner> 
-                                {wallet && isActive && whitelistEnabled && (whitelistTokenBalance < 0) &&
+                                {wallet && isActive && whitelistEnabled && (whitelistTokenBalance > 0) &&
                               <h3>Congrats. You are whitelisted!</h3>}
                             {wallet && isActive &&
                                 /* <p>Total Minted : {100 - (itemsRemaining * 100 / itemsAvailable)}%</p>}*/
