@@ -372,11 +372,11 @@ const Home = (props: HomeProps) => {
         let remaining = itemsRemaining - 1;
         setItemsRemaining(remaining);
         setIsSoldOut(remaining === 0);
-        if (whitelistTokenBalance && whitelistTokenBalance > 0) {
-            let balance = whitelistTokenBalance - 1;
-            setWhitelistTokenBalance(balance);
-            setIsActive(balance > 0);
-        }
+      //  if (whitelistTokenBalance && whitelistTokenBalance > 0) {
+      //      let balance = whitelistTokenBalance - 1;
+      //      setWhitelistTokenBalance(balance);
+      //      setIsActive(balance > 0);
+      //  }
         setItemsRedeemed(itemsRedeemed + 1);
         const solFeesEstimation = 0.012; // approx
         if (!payWithSplToken && balance && balance > 0) {
@@ -512,7 +512,7 @@ const Home = (props: HomeProps) => {
                             <p></p>
                             <LogoAligner><p>COST:&nbsp;&nbsp;&nbsp;&nbsp;<img src="solana-sol-logo.svg" alt=""></img>1 SOL</p></LogoAligner> 
                                 {wallet && isActive && whitelistEnabled && (whitelistTokenBalance > 0) &&
-                              <h3>You have {whitelistTokenBalance} whitelist mint(s) remaining.</h3>}
+                              <h3>Congrats. You are whitelisted!</h3>}
                             {wallet && isActive &&
                                 /* <p>Total Minted : {100 - (itemsRemaining * 100 / itemsAvailable)}%</p>}*/
                               <h3>TOTAL MINTED : {itemsRedeemed} / {itemsAvailable}</h3>}
