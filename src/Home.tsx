@@ -353,7 +353,9 @@ const Home = (props: HomeProps) => {
                     balance = 0;
                 }
                 setWhitelistTokenBalance(balance);
-                setIsActive(balance > 0);
+                if (cndy.state.whitelistMintSettings.presale || cndy.state.isActive) {
+                    setIsActive(balance > 0);
+                }
             } else {
                 setWhitelistEnabled(false);
             }
