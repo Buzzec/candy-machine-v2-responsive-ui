@@ -36,7 +36,7 @@ const WalletAmount = styled.div`
   padding: 5px 5px 5px 16px;
   min-width: 48px;
   min-height: auto;
-  border-radius: 22px;
+  border-radius: 5px;
   background-color: var(--main-text-color);
   box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
   box-sizing: border-box;
@@ -364,9 +364,9 @@ const Home = (props: HomeProps) => {
 
     const renderCounter = ({days, hours, minutes, seconds}: any) => {
         return (
-            <div style={{ height: 100 }}> <Card elevation={1}><h1>{days}</h1><br/>Days</Card><Card elevation={1}><h1>{hours}</h1>
-                <br/>Hours</Card><Card elevation={1}><h1>{minutes}</h1><br/>Mins</Card><Card elevation={1}>
-                <h1>{seconds}</h1><br/>Secs</Card></div>
+            <div><Card elevation={1}><h1>{days}</h1>Days</Card><Card elevation={1}><h1>{hours}</h1>
+                Hours</Card><Card elevation={1}><h1>{minutes}</h1>Mins</Card><Card elevation={1}>
+                <h1>{seconds}</h1>Secs</Card></div>
         );
     };
 
@@ -496,7 +496,7 @@ const Home = (props: HomeProps) => {
                             <ConnectButton>Connect Wallet</ConnectButton>}
                     </Wallet>
                 </WalletContainer>                
-                <ShimmerTitle></ShimmerTitle>
+                <br/>
                 <MintContainer>
                     <DesContainer>
                         <NFT elevation={3}>
